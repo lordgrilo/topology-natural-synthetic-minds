@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Topology of Human and Synthetic Minds - Workshop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a1f3a;
+            --secondary-color: #6366f1;
+            --accent-color: #ec4899;
+            --text-light: #94a3b8;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--bg-dark);
+            color: #e2e8f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Header with Topological Visualization */
+        header {
+            position: relative;
+            height: 60vh;
+            min-height: 500px;
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .topology-visual {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .topology-visual svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .neural-path {
+            stroke: url(#gradient1);
+            stroke-width: 0.5;
+            fill: none;
+            opacity: 0.6;
+            animation: pulse 8s infinite;
+        }
+
+        .topology-surface {
+            fill: url(#gradient2);
+            opacity: 0.1;
+            animation: morph 15s infinite;
+        }
+
+        .node {
+            fill: #6366f1;
+            filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.5));
+            animation: float 6s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { stroke-width: 0.5; opacity: 0.6; }
+            50% { stroke-width: 1.5; opacity: 0.9; }
+        }
+
+        @keyframes morph {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            max-width: 800px;
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .institute {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .location {
+            font-size: 1rem;
+            color: #64748b;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Registration Section */
+        .registration-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+            border-radius: 20px;
+            margin-bottom: 4rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .registration-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .registration-section h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .registration-info {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .register-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #ec4899 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .register-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        /* People Grid Sections */
+        .people-section {
+            margin-bottom: 4rem;
+        }
+
+        .people-section h2 {
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .people-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #ec4899 100%);
+        }
+
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            padding: 2rem;
+        }
+
+        .person-card {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .person-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: 300;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .person-card:hover .profile-photo {
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+            transform: scale(1.05);
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .person-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.5rem;
+        }
+
+        .person-role {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* Organizers - Special Styling */
+        .organizers {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .schedule {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .day-schedule {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .day-schedule:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
+        }
+
+        .day-header {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--secondary-color);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .session {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 2rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: rgba(99, 102, 241, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .session:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-left-color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+
+        .time {
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .speaker {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .break {
+            background: rgba(236, 72, 153, 0.05);
+            border-left-color: var(--accent-color);
+        }
+
+        .break:hover {
+            background: rgba(236, 72, 153, 0.1);
+            border-left-color: var(--accent-color);
+        }
+
+        .break .time {
+            color: var(--accent-color);
+        }
+
+        .break .speaker {
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .session {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .people-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 2rem;
+            }
+
+            .profile-photo {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        /* Floating particles effect */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: drift 20s infinite;
+        }
+
+        @keyframes drift {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(100px, -100px) rotate(90deg);
+            }
+            50% {
+                transform: translate(-100px, -200px) rotate(180deg);
+            }
+            75% {
+                transform: translate(-50px, -100px) rotate(270deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Header -->
+    <header>
+        <div class="topology-visual">
+            <svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.3" />
+                        <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.3" />
+                    </linearGradient>
+                </defs>
+                
+                <!-- Topological surface (torus-like shape) -->
+                <ellipse cx="600" cy="300" rx="400" ry="200" class="topology-surface" />
+                <ellipse cx="600" cy="300" rx="350" ry="150" class="topology-surface" />
+                <ellipse cx="600" cy="300" rx="300" ry="100" class="topology-surface" />
+                
+                <!-- Neural network paths -->
+                <path d="M200,300 Q400,100 600,300 T1000,300" class="neural-path" />
+                <path d="M200,200 Q600,400 1000,200" class="neural-path" />
+                <path d="M300,150 Q600,350 900,150" class="neural-path" />
+                <path d="M100,400 Q600,200 1100,400" class="neural-path" />
+                
+                <!-- Nodes representing minds -->
+                <circle cx="200" cy="300" r="8" class="node" style="animation-delay: 0s" />
+                <circle cx="400" cy="200" r="8" class="node" style="animation-delay: 1s" />
+                <circle cx="600" cy="300" r="12" class="node" style="animation-delay: 2s" />
+                <circle cx="800" cy="200" r="8" class="node" style="animation-delay: 3s" />
+                <circle cx="1000" cy="300" r="8" class="node" style="animation-delay: 4s" />
+                <circle cx="300" cy="400" r="6" class="node" style="animation-delay: 1.5s" />
+                <circle cx="700" cy="400" r="6" class="node" style="animation-delay: 2.5s" />
+                <circle cx="900" cy="400" r="6" class="node" style="animation-delay: 3.5s" />
+            </svg>
+        </div>
+        
+        <div class="header-content">
+            <h1>The Topology of Human and Synthetic Minds</h1>
+            <div class="institute">King's Institute for Human and Synthetic Minds</div>
+            <div class="location">King's College London</div>
+        </div>
+
+        <!-- Floating particles -->
+        <div class="particle" style="top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="top: 20%; left: 80%; animation-delay: 2s;"></div>
+        <div class="particle" style="top: 60%; left: 20%; animation-delay: 4s;"></div>
+        <div class="particle" style="top: 80%; left: 70%; animation-delay: 6s;"></div>
+        <div class="particle" style="top: 40%; left: 50%; animation-delay: 8s;"></div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Registration Section -->
+        <div class="registration-section">
+            <h2>Registration</h2>
+            <p class="registration-info">
+                Registration is <strong>free</strong> but required for catering purposes.<br>
+                Please register to secure your spot and help us plan for refreshments.
+            </p>
+            <a href="#" class="register-button" onclick="alert('Registration link would go here'); return false;">
+                Register Now
+            </a>
+        </div>
+
+        <!-- Speakers Section -->
+        <div class="people-section">
+            <h2>Speakers</h2>
+            <div class="people-grid">
+                <div class="person-card">
+                    <div class="profile-photo">OB</div>
+                    <div class="person-name">Omer Brobowski</div>
+                    <div class="person-role">Speaker</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">GB</div>
+                    <div class="person-name">Ginestra Bianconi</div>
+                    <div class="person-role">Speaker</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">AS</div>
+                    <div class="person-name">Andrea Santoro</div>
+                    <div class="person-role">Speaker</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">MS</div>
+                    <div class="person-name">Maneesh Saggar</div>
+                    <div class="person-role">Speaker</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">BD</div>
+                    <div class="person-name">Benjamin Dunn</div>
+                    <div class="person-role">Speaker</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">GD</div>
+                    <div class="person-name">Giovanni Di Sarra</div>
+                    <div class="person-role">Speaker</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">AM</div>
+                    <div class="person-name">Anthea Monod</div>
+                    <div class="person-role">Speaker</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Organizers Section -->
+        <div class="people-section organizers">
+            <h2>Workshop Organizers</h2>
+            <div class="people-grid">
+                <div class="person-card">
+                    <div class="profile-photo">GP</div>
+                    <div class="person-name">Giovanni Petri</div>
+                    <div class="person-role">Organizer</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">YR</div>
+                    <div class="person-name">Yasser Roudi</div>
+                    <div class="person-role">Organizer</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">FT</div>
+                    <div class="person-name">Federico Turkheimer</div>
+                    <div class="person-role">Organizer & Host</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Schedule -->
+        <div class="schedule">
+            <!-- Day 1 -->
+            <div class="day-schedule">
+                <h2 class="day-header">September 15</h2>
+                
+                <div class="session">
+                    <div class="time">9:30 - 9:45</div>
+                    <div class="speaker">Welcome and introduction to the Institute by Federico Turkheimer</div>
+                </div>
+                
+                <div class="session">
+                    <div class="time">9:45 - 10:45</div>
+                    <div class="speaker">Omer Brobowski</div>
+                </div>
+                
+                <div class="session break">
+                    <div class="time">10:45 - 11:00</div>
+                    <div class="speaker">Coffee Break</div>
+                </div>
+                
+                <div class="session">
+                    <div class="time">11:00 - 12:00</div>
+                    <div class="speaker">Ginestra Bianconi</div>
+                </div>
+                
+                <div class="session break">
+                    <div class="time">12:00 - 14:00</div>
+                    <div class="speaker">Lunch Break</div>
+                </div>
+                
+                <div class="session">
+                    <div class="time">14:00 - 15:00</div>
+                    <div class="speaker">Andrea Santoro</div>
+                </div>
+                
+                <div class="session break">
+                    <div class="time">15:00 - 15:15</div>
+                    <div class="speaker">Coffee Break</div>
+                </div>
+                
+                <div class="session">
+                    <div class="time">15:15 - 16:15</div>
+                    <div class="speaker">Maneesh Saggar</div>
+                </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="day-schedule">
+                <h2 class="day-header">September 16</h2>
+                
+                <div class="session">
+                    <div class="time">9:45 - 10:45</div>
+                    <div class="speaker">Benjamin Dunn</div>
+                </div>
+                
+                <div class="session break">
+                    <div class="time">10:45 - 11:00</div>
+                    <div class="speaker">Coffee Break</div>
+                </div>
+                
+                <div class="session">
+                    <div class="time">11:00 - 12:00</div>
+                    <div class="speaker">Giovanni Di Sarra</div>
+                </div>
+                
+                <div class="session break">
+                    <div class="time">12:00 - 14:00</div>
+                    <div class="speaker">Lunch Break</div>
+                </div>
+                
+                <div class="session">
+                    <div class="time">14:00 - 15:00</div>
+                    <div class="speaker">Anthea Monod</div>
+                </div>
+                
+                <div class="session break">
+                    <div class="time">15:00 - 15:15</div>
+                    <div class="speaker">Coffee Break</div>
+                </div>
+                
+                <div class="session">
+                    <div class="time">15:15 - 16:00</div>
+                    <div class="speaker">Giovanni Petri</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration object (simulating TOML structure)
+        const config = {
+            workshop: {
+                title: "The Topology of Human and Synthetic Minds",
+                institute: "King's Institute for Human and Synthetic Minds",
+                location: "King's College London"
+            },
+            registration: {
+                url: "https://example.com/register", // Replace with actual registration URL
+                text: "Registration is free but required for catering purposes"
+            },
+            speakers: [
+                { name: "Omer Brobowski", initials: "OB", photo: null },
+                { name: "Ginestra Bianconi", initials: "GB", photo: null },
+                { name: "Andrea Santoro", initials: "AS", photo: null },
+                { name: "Maneesh Saggar", initials: "MS", photo: null },
+                { name: "Benjamin Dunn", initials: "BD", photo: null },
+                { name: "Giovanni Di Sarra", initials: "GD", photo: null },
+                { name: "Anthea Monod", initials: "AM", photo: null }
+            ],
+            organizers: [
+                { name: "Giovanni Petri", initials: "GP", photo: null, role: "Organizer" },
+                { name: "Yasser Roudi", initials: "YR", photo: null, role: "Organizer" },
+                { name: "Federico Turkheimer", initials: "FT", photo: null, role: "Organizer & Host" }
+            ],
+            schedule: {
+                day1: {
+                    date: "September 15",
+                    sessions: [
+                        { time: "9:30 - 9:45", speaker: "Welcome and introduction to the Institute by Federico Turkheimer", type: "talk" },
+                        { time: "9:45 - 10:45", speaker: "Omer Brobowski", type: "talk" },
+                        { time: "10:45 - 11:00", speaker: "Coffee Break", type: "break" },
+                        { time: "11:00 - 12:00", speaker: "Ginestra Bianconi", type: "talk" },
+                        { time: "12:00 - 14:00", speaker: "Lunch Break", type: "break" },
+                        { time: "14:00 - 15:00", speaker: "Andrea Santoro", type: "talk" },
+                        { time: "15:00 - 15:15", speaker: "Coffee Break", type: "break" },
+                        { time: "15:15 - 16:15", speaker: "Maneesh Saggar", type: "talk" }
+                    ]
+                },
+                day2: {
+                    date: "September 16",
+                    sessions: [
+                        { time: "9:45 - 10:45", speaker: "Benjamin Dunn", type: "talk" },
+                        { time: "10:45 - 11:00", speaker: "Coffee Break", type: "break" },
+                        { time: "11:00 - 12:00", speaker: "Giovanni Di Sarra", type: "talk" },
+                        { time: "12:00 - 14:00", speaker: "Lunch Break", type: "break" },
+                        { time: "14:00 - 15:00", speaker: "Anthea Monod", type: "talk" },
+                        { time: "15:00 - 15:15", speaker: "Coffee Break", type: "break" },
+                        { time: "15:15 - 16:00", speaker: "Giovanni Petri", type: "talk" }
+                    ]
+                }
+            }
+        };
+
+        // Function to dynamically load profile photos (placeholder for now)
+        // In a real application, you would update the config.speakers and config.organizers arrays
+        // with actual photo URLs and then update the DOM accordingly
+        
+        function loadProfilePhotos() {
+            // This function would load actual photos from URLs specified in the config
+            // For now, it uses initials as placeholders
+            console.log("Profile photos would be loaded here from config URLs");
+        }
+
+        // Add smooth scrolling for any future navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Add intersection observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sessions and person cards for animation
+        document.querySelectorAll('.session, .person-card').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'all 0.6s ease';
+            observer.observe(element);
+        });
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', loadProfilePhotos);
+    </script>
+</body>
+</html>
