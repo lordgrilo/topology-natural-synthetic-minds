@@ -261,7 +261,6 @@
             position: relative;
             box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
             transition: all 0.3s ease;
-            overflow: hidden;
         }
 
         .person-card:hover .profile-photo {
@@ -272,15 +271,8 @@
         .profile-photo img {
             width: 100%;
             height: 100%;
+            border-radius: 50%;
             object-fit: cover;
-        }
-
-        .profile-photo .initials {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
         }
 
         .person-name {
@@ -288,23 +280,6 @@
             font-weight: 600;
             color: #e2e8f0;
             margin-bottom: 0.5rem;
-        }
-
-        .person-name a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .person-name a:hover {
-            color: var(--secondary-color);
-        }
-
-        .person-affiliation {
-            font-size: 0.85rem;
-            color: #64748b;
-            margin-bottom: 0.3rem;
-            min-height: 1.2em;
         }
 
         .person-role {
@@ -510,30 +485,98 @@
                 Registration is <strong>free</strong> but required for catering purposes.<br>
                 Please register to secure your spot and help us plan for refreshments.
             </p>
-            <!-- <a href="#" class="register-button" id="register-btn" target="_blank" rel="noopener noreferrer">
+            <a href="#" class="register-button" onclick="alert('Registration link would go here'); return false;">
                 Register Now
-            </a> -->
-            <a href="https://www.eventbrite.com/e/the-topology-of-human-and-synthetic-minds-tickets-1663041825869?aff=oddtdtcreator" 
-   class="register-button" 
-   target="_blank" 
-   rel="noopener noreferrer">
-    Register Now
-</a>
+            </a>
         </div>
 
         <!-- Speakers Section -->
         <div class="people-section">
             <h2>Speakers</h2>
-            <div class="people-grid" id="speakers-grid">
-                <!-- Speakers will be dynamically generated here -->
+            <div class="people-grid">
+                <div class="person-card">
+                    <div class="profile-photo">YR</div>
+                    <div class="person-name">Yasser Roudi</div>
+                    <div class="person-role">Speaker</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">GB</div>
+                    <div class="person-name">Ginestra Bianconi</div>
+                    <div class="person-role">Speaker</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">OB</div>
+                    <div class="person-name">Omer Brobowski</div>
+                    <div class="person-role">Speaker</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">MS</div>
+                    <div class="person-name">Manish Saggar</div>
+                    <div class="person-role">Speaker</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">AS</div>
+                    <div class="person-name">Andrea Santoro</div>
+                    <div class="person-role">Speaker</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">BD</div>
+                    <div class="person-name">Benjamin Dunn</div>
+                    <div class="person-role">Speaker</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">LF</div>
+                    <div class="person-name">Leonardo Federici</div>
+                    <div class="person-role">Speaker</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">GD</div>
+                    <div class="person-name">Giovanni Di Sarra</div>
+                    <div class="person-role">Speaker</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">MB</div>
+                    <div class="person-name">Michael Bronstein</div>
+                    <div class="person-role">Speaker</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">GP</div>
+                    <div class="person-name">Giovanni Petri</div>
+                    <div class="person-role">Speaker</div>
+                </div>
             </div>
         </div>
 
         <!-- Organizers Section -->
         <div class="people-section organizers">
             <h2>Workshop Organizers</h2>
-            <div class="people-grid" id="organizers-grid">
-                <!-- Organizers will be dynamically generated here -->
+            <div class="people-grid">
+                <div class="person-card">
+                    <div class="profile-photo">GP</div>
+                    <div class="person-name">Giovanni Petri</div>
+                    <div class="person-role">Organizer</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">YR</div>
+                    <div class="person-name">Yasser Roudi</div>
+                    <div class="person-role">Organizer</div>
+                </div>
+                
+                <div class="person-card">
+                    <div class="profile-photo">FT</div>
+                    <div class="person-name">Federico Turkheimer</div>
+                    <div class="person-role">Organizer & Host</div>
+                </div>
             </div>
         </div>
 
@@ -630,232 +673,80 @@
                 
                 <div class="session">
                     <div class="time">15:45 - 16:45</div>
-                    <div class="speaker">Uzu Lim</div>
+                    <div class="speaker">Giovanni Petri</div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // ============================================
-        // CONFIGURATION - EDIT THIS SECTION
-        // ============================================
-        
+        // Configuration object (simulating TOML structure)
         const config = {
             workshop: {
                 title: "The Topology of Human and Synthetic Minds",
                 institute: "King's Institute for Human and Synthetic Minds",
                 location: "King's College London"
             },
-            
             registration: {
-                // STEP 1: Replace this with your actual registration form URL
-                url: "https://www.eventbrite.com/e/the-topology-of-human-and-synthetic-minds-tickets-1663041825869?aff=oddtdtcreator",
-                text: "Registration is free but required for catering and access purposes."
+                url: "https://example.com/register", // Replace with actual registration URL
+                text: "Registration is free but required for catering purposes"
             },
-            
             speakers: [
-                // ============================================
-                // HOW TO ADD SPEAKER INFO:
-                // ============================================
-                // Each speaker object should have:
-                // - name: Full name (required)
-                // - initials: 2-3 letter initials for fallback (required)
-                // - photo: URL to photo (optional - set to null if no photo)
-                // - affiliation: University/Organization (optional)
-                // - website: Personal or lab website URL (optional)
-                
-                // EXAMPLE WITH ALL FIELDS:
-                /*
-                {
-                    name: "Jane Doe",
-                    initials: "JD",
-                    photo: "https://university.edu/photos/jane-doe.jpg",
-                    affiliation: "MIT",
-                    website: "https://janedoe.com"
-                },
-                */
-                
-                // EXAMPLE WITH LOCAL PHOTO:
-                /*
-                {
-                    name: "John Smith",
-                    initials: "JS",
-                    photo: "./photos/john-smith.jpg",
-                    affiliation: "Stanford University",
-                    website: null
-                },
-                */
-                
-                // { 
-                //     name: "Yasser Roudi", 
-                //     initials: "YR", 
-                //     photo: null, // <- Add photo URL here
-                //     affiliation: null, // <- Add affiliation here
-                //     website: null // <- Add website here
-                // },
-                { 
-                    name: "Ginestra Bianconi", 
-                    initials: "GB", 
-                    photo: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTIfPAYQjDjWpZIcTJI0oap1UX-yclQs5R7s67hpc5zveBVcHL5",
-                    affiliation: "Queen Mary University of London",
-                    website: "https://webspace.maths.qmul.ac.uk/g.bianconi/"
-                },
-                { 
-                    name: "Omer Brobowski", 
-                    initials: "OB", 
-                    photo: "https://lh6.googleusercontent.com/qkmustyhdvPNtEqq8zHLYVTT-ge5GVoeUnqNsMH9ens3DUgq7BAMDGYA0a3KNO0ye3SNVatFSMB3E70XI3HJOEnHwxJGuxl3qzrhw-R-suPA37no9FD1XPKYwuspevsJSgkOxdT31gIezxRzbVigulGP8p1JXHTmLl0C=w1280",
-                    affiliation: "Queen Mary University of London",
-                    website: "https://sites.google.com/site/omerbobrowski/home"
-                },
-                { 
-                    name: "Manish Saggar", 
-                    initials: "MS", 
-                    photo: "https://braindynamicslab.github.io/images/team/manish.jpg",
-                    affiliation: "Stanford University",
-                    website: "https://braindynamicslab.github.io/team/manish-saggar/"
-                },
-                { 
-                    name: "Andrea Santoro", 
-                    initials: "AS", 
-                    photo: "https://andresantoro.github.io/images/bio-photo.jpg",
-                    affiliation: "CENTAI",
-                    website: "https://andresantoro.github.io/"
-                },
-                { 
-                    name: "Benjamin Dunn", 
-                    initials: "BD", 
-                    photo: "https://backends.it.ntnu.no/user-profile-service/rest/files/5cd7e5f4-2faf-3819-99be-1a598458b148",
-                    affiliation: "NTNU",
-                    website: "https://www.ntnu.edu/employees/benjamin.dunn"
-                },
-                { 
-                    name: "Leonardo Federici", 
-                    initials: "LF", 
-                    photo: "https://media.licdn.com/dms/image/v2/D4D03AQFzTjvWObE1Ig/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1702214846361?e=2147483647&v=beta&t=0iQIC1zkNEwBaYi2yVZQbHg66CQ8FNp9cAMXnFVPctg",
-                    affiliation: "Northeastern University London",
-                    website: "https://www.networkscienceinstitute.org/people/leonardo-federici"
-                },
-                { 
-                    name: "Giovanni Di Sarra", 
-                    initials: "GD", 
-                    photo: "https://backends.it.ntnu.no/user-profile-service/rest/files/e8ce6ad6-af98-3541-b0cb-175ac09695e6",
-                    affiliation: "NTNU",
-                    website: "https://www.ntnu.edu/employees/giovanni.d.sarra"
-                },
-                { 
-                    name: "Michael Bronstein", 
-                    initials: "MB", 
-                    photo: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Michael_Bronstein.jpg", // Example: "./images/bronstein.jpg"
-                    affiliation: "University of Oxford",
-                    website: "https://www.cs.ox.ac.uk/people/michael.bronstein/"
-                },
-                { 
-                    name: "Uzu Lim ", 
-                    initials: "UL", 
-                    photo: "https://lh6.googleusercontent.com/2S9YXNiNaJLfYQCwtqOtggvGQdtXGa1US00ZYyZ5F2WwMYuxWzNjQD-f9Dut2q6cqwyo5-gZU_O5RKU6xb3N6wiLi8NB3S_m0Zgkh77Sg28Cd1E-wfbqP_EzjjnK9e__bidIO9ubux230w_zIxzQbrklALZRmwcgMKK56jOwusfVIsLac5Zq8g=w1280",
-                    affiliation: "Queen Mary University of London",
-                    website: "https://lh4.googleusercontent.com/EEEoMS2fkoJ4y8n9DlKKYYfy44Xcf03nRtfmQs_U17v1ks9musgOYhykmAcmUNHJHbg9A_CH353-LfE2EyWlQYaHmdrZfsV7BaFPxW8Dy-rCg0upf2NvGQxxOy0DPsJCfAC7a8awHCEZDnW5ImJQHrwx7UD_YWjkVgCATi8czTW2Se5E96jIOg=w1280"
-                }
+                { name: "Yasser Roudi", initials: "YR", photo: null },
+                { name: "Ginestra Bianconi", initials: "GB", photo: null },
+                { name: "Omer Brobowski", initials: "OB", photo: null },
+                { name: "Manish Saggar", initials: "MS", photo: null },
+                { name: "Andrea Santoro", initials: "AS", photo: null },
+                { name: "Benjamin Dunn", initials: "BD", photo: null },
+                { name: "Leonardo Federici", initials: "LF", photo: null },
+                { name: "Giovanni Di Sarra", initials: "GD", photo: null },
+                { name: "Michael Bronstein", initials: "MB", photo: "/images/MB.jpg" },
+                { name: "Giovanni Petri", initials: "GP", photo: null }
             ],
-            
             organizers: [
-                { 
-                    name: "Giovanni Petri", 
-                    initials: "GP", 
-                    photo: "https://cdn.prod.website-files.com/673b1c6a31679f06b3cef571/673b1c6a31679f06b3cef749_giovanni.jpg",
-                    affiliation: "Northeastern University London",
-                    website: "https://nplresearch.github.io/",
-                    role: "Organizer" 
+                { name: "Giovanni Petri", initials: "GP", photo: null, role: "Organizer" },
+                { name: "Yasser Roudi", initials: "YR", photo: null, role: "Organizer" },
+                { name: "Federico Turkheimer", initials: "FT", photo: null, role: "Organizer & Host" }
+            ],
+            schedule: {
+                day1: {
+                    date: "September 15",
+                    sessions: [
+                        { time: "9:30 - 9:45", speaker: "Welcome and introduction to the Institute by Federico Turkheimer", type: "talk" },
+                        { time: "9:45 - 10:45", speaker: "Yasser Roudi", type: "talk" },
+                        { time: "10:45 - 11:30", speaker: "Ginestra Bianconi", type: "talk" },
+                        { time: "11:30 - 11:45", speaker: "Coffee Break", type: "break" },
+                        { time: "11:45 - 12:30", speaker: "Omer Brobowski", type: "talk" },
+                        { time: "12:30 - 14:30", speaker: "Lunch Break", type: "break" },
+                        { time: "14:30 - 15:30", speaker: "Manish Saggar", type: "talk" },
+                        { time: "15:30 - 15:45", speaker: "Coffee Break", type: "break" },
+                        { time: "15:45 - 16:45", speaker: "Andrea Santoro", type: "talk" }
+                    ]
                 },
-                { 
-                    name: "Yasser Roudi", 
-                    initials: "YR", 
-                    photo: "https://www.kcl.ac.uk/newimages/person-profile/2022a/yr.x6e68d269.png?w=540&h=644&crop=540,540,0,52&f=webp",
-                    affiliation: "King's College",
-                    website: "https://www.kcl.ac.uk/people/yasser-roudi",
-                    role: "Organizer" 
-                },
-                { 
-                    name: "Federico Turkheimer", 
-                    initials: "FT", 
-                    photo: "https://www.kcl.ac.uk/newimages/ioppn/neuroscience/staff-headshots/federico-turkheimer.x18306cf3.jpg?w=203&h=305&crop=160,160,43,0&f=webp",
-                    affiliation: "King's College London",
-                    website: "King's College",
-                    role: "Organizer & Host" 
+                day2: {
+                    date: "September 16",
+                    sessions: [
+                        { time: "9:45 - 10:45", speaker: "Benjamin Dunn", type: "talk" },
+                        { time: "10:45 - 11:30", speaker: "Leonardo Federici", type: "talk" },
+                        { time: "11:30 - 11:45", speaker: "Coffee Break", type: "break" },
+                        { time: "11:45 - 12:30", speaker: "Giovanni Di Sarra", type: "talk" },
+                        { time: "12:30 - 14:30", speaker: "Lunch Break", type: "break" },
+                        { time: "14:30 - 15:30", speaker: "Michael Bronstein", type: "talk" },
+                        { time: "15:30 - 15:45", speaker: "Coffee Break", type: "break" },
+                        { time: "15:45 - 16:45", speaker: "Giovanni Petri", type: "talk" }
+                    ]
                 }
-            ]
+            }
         };
 
-        // ============================================
-        // DYNAMIC RENDERING CODE - DO NOT EDIT BELOW
-        // ============================================
+        // Function to dynamically load profile photos (placeholder for now)
+        // In a real application, you would update the config.speakers and config.organizers arrays
+        // with actual photo URLs and then update the DOM accordingly
         
-        function generatePersonCard(person, type = 'speaker') {
-            let photoContent = '';
-            
-            if (person.photo) {
-                // If photo URL is provided, use it with fallback to initials
-                photoContent = `
-                    <img src="${person.photo}" 
-                         alt="${person.name}" 
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="initials" style="display:none;">${person.initials}</div>
-                `;
-            } else {
-                // No photo provided, just show initials
-                photoContent = `<div class="initials">${person.initials}</div>`;
-            }
-            
-            // Generate the name with optional link
-            let nameContent = person.website 
-                ? `<a href="${person.website}" target="_blank" rel="noopener">${person.name}</a>`
-                : person.name;
-            
-            // Determine role
-            const role = type === 'organizer' ? (person.role || 'Organizer') : 'Speaker';
-            
-            return `
-                <div class="person-card">
-                    <div class="profile-photo">${photoContent}</div>
-                    <div class="person-name">${nameContent}</div>
-                    <div class="person-affiliation">${person.affiliation || ''}</div>
-                    <div class="person-role">${role}</div>
-                </div>
-            `;
-        }
-        
-        function loadContent() {
-            // Load speakers
-            const speakersGrid = document.getElementById('speakers-grid');
-            if (speakersGrid && config.speakers) {
-                speakersGrid.innerHTML = config.speakers
-                    .map(speaker => generatePersonCard(speaker, 'speaker'))
-                    .join('');
-            }
-            
-            // Load organizers
-            const organizersGrid = document.getElementById('organizers-grid');
-            if (organizersGrid && config.organizers) {
-                organizersGrid.innerHTML = config.organizers
-                    .map(organizer => generatePersonCard(organizer, 'organizer'))
-                    .join('');
-            }
-            
-            // Update registration link
-            const registerButton = document.getElementById('register-btn');
-            if (registerButton && config.registration.url) {
-                registerButton.href = config.registration.url;
-                // Remove the onclick alert if URL is properly set
-                if (config.registration.url !== "https://forms.gle/your-actual-registration-form") {
-                    registerButton.onclick = null;
-                } else {
-                    registerButton.onclick = (e) => {
-                        e.preventDefault();
-                        alert('Please update the registration URL in the config section');
-                    };
-                }
-            }
+        function loadProfilePhotos() {
+            // This function would load actual photos from URLs specified in the config
+            // For now, it uses initials as placeholders
+            console.log("Profile photos would be loaded here from config URLs");
         }
 
         // Add smooth scrolling for any future navigation
@@ -874,78 +765,30 @@
         });
 
         // Add intersection observer for scroll animations
-        function initAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
 
-            // Observe all sessions and person cards for animation
-            setTimeout(() => {
-                document.querySelectorAll('.session, .person-card').forEach(element => {
-                    element.style.opacity = '0';
-                    element.style.transform = 'translateY(20px)';
-                    element.style.transition = 'all 0.6s ease';
-                    observer.observe(element);
-                });
-            }, 100);
-        }
+        // Observe all sessions and person cards for animation
+        document.querySelectorAll('.session, .person-card').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'all 0.6s ease';
+            observer.observe(element);
+        });
 
         // Initialize on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            loadContent();
-            initAnimations();
-        });
+        document.addEventListener('DOMContentLoaded', loadProfilePhotos);
     </script>
-
-    <!-- 
-    ============================================
-    INSTRUCTIONS FOR ADDING PHOTOS:
-    ============================================
-    
-    1. PHOTO URLs - You can use:
-       - Full URLs: "https://university.edu/photos/person.jpg"
-       - Relative paths: "./images/person.jpg" or "/photos/person.jpg"
-       - Leave as null if no photo available
-    
-    2. PHOTO FILES:
-       - Recommended size: 400x400px minimum
-       - Format: JPG, PNG, or WebP
-       - They will be automatically cropped to circles
-    
-    3. AFFILIATIONS:
-       - Add the university or organization name
-       - Keep it short (e.g., "MIT" or "Stanford University")
-    
-    4. WEBSITES:
-       - Add personal or lab websites
-       - Must include https:// or http://
-       - Links will open in new tabs
-    
-    5. REGISTRATION LINK:
-       - Replace "https://forms.gle/your-actual-registration-form"
-       - With your actual registration form URL
-    
-    EXAMPLE OF FULLY CONFIGURED SPEAKER:
-    
-    {
-        name: "Michael Bronstein",
-        initials: "MB",
-        photo: "./images/bronstein.jpg",
-        affiliation: "University of Oxford",
-        website: "https://www.cs.ox.ac.uk/people/michael.bronstein/"
-    }
-    
-    ============================================
-    -->
 </body>
 </html>
