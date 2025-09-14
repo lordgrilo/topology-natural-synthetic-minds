@@ -446,6 +446,32 @@
                 transform: translate(-50px, -100px) rotate(270deg);
             }
         }
+
+        .footer {
+    background: var(--bg-card);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.footer-logos {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+}
+
+.footer-logos img {
+    height: 60px;  /* adjust as needed */
+    width: auto;
+    filter: brightness(1) invert(0); /* makes logos white-ish if needed */
+    transition: transform 0.3s ease;
+}
+
+.footer-logos img:hover {
+    transform: scale(1.1);
+}
     </style>
 </head>
 <body>
@@ -556,7 +582,7 @@
                 </div>
                 
                 <div class="session">
-                    <div class="time">10:15 - 11:10</div>
+                    <div class="time">10:15 - 11:15</div>
                     <div class="speaker">Ginestra Bianconi</div>
                 </div>
                 
@@ -949,5 +975,14 @@
     
     ============================================
     -->
+    <!-- Footer with Logos -->
+<footer class="footer">
+  <div class="footer-logos">
+    <img src="images/kings.png" alt="King's Institute" />
+    <img src="images/netsi.png" alt="NetSI" />
+    <img src="images/erc.png" alt="RUNES" />
+  </div>
+</footer>
 </body>
+
 </html>
